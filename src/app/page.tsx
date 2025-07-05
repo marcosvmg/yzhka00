@@ -1,9 +1,18 @@
+import Inicio from "@/components/sections/Inicio";
+import Artistas from "@/components/sections/Artistas";
+import Manifesto from "@/components/sections/Manifesto";
+import Footer from "@/components/Footer";
+import ScrollController from "@/components/ScrollController";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <h1 className="text-5xl font-mono uppercase tracking-[.2em] text-gray-200">
-        #YZHKA00
-      </h1>
+    <main>
+      <ScrollController>
+        <Inicio />
+        <Artistas />
+        <Manifesto />
+        <Footer />
+      </ScrollController>
     </main>
   );
 }

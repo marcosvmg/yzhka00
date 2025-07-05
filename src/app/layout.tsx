@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { VT323, EB_Garamond } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/context/ThemeContext";
+import { ScrollProvider } from "@/context/ScrollContext";
+import CustomCursor from "@/components/CustomCursor";
+import Navigation from "@/components/Navigation";
+import SVGFilters from "@/components/SVGFilters";
 
-const inter = Inter({ subsets: ["latin"] });
+const fontHeading = VT323({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-heading",
+});
+const fontBody = EB_Garamond({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  weight: ["400", "700"],
+  variable: "--font-body",
+});
 
 export const metadata: Metadata = {
   title: "#YZHKA00",
@@ -16,12 +31,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      {/* Definimos o fundo como preto e a cor do texto padrão como um cinza claro */}
-      <body className={`${inter.className} bg-black text-gray-300`}>
-        {children}
-
-        {/* Camada de Ruído: fixa sobre todo o conteúdo */}
-        <div className="noise-overlay fixed top-0 left-0 w-full h-full pointer-events-none z-[999] overflow-hidden"></div>
+      <body className={`${fontHeading.variable} ${fontBody.variable} font-['var(--font-body)']`}>
+        <ThemeProvider>
+      <SVGFilters />
+          <ScrollProvider>
+            <CustomCursor />
+            {children}
+            <Navigation />
+            <div className="noise-overlay"></div>
+          </ScrollProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
