@@ -4,8 +4,8 @@ import { useScroll } from '@/context/ScrollContext';
 
 const navItems = [
   { targetIndex: 0, symbol: '☉', label: 'início' },
-  { targetIndex: 1, symbol: '⚚', label: 'artistas' },
-  { targetIndex: 2, symbol: '✦', label: 'contato' },
+  { targetIndex: 1, symbol: '⚚', label: 'nomes do movimento' },
+  { targetIndex: 2, symbol: '✦', label: 'quem somos' },
 ];
 
 export default function Navigation() {
