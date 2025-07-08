@@ -3,10 +3,10 @@
 import { useScroll } from '@/context/ScrollContext';
 
 const navItems = [
-  { targetIndex: 0, symbol: '△', label: 'Início' },
-  { targetIndex: 1, symbol: '☿', label: 'Artistas' },
-  { targetIndex: 2, symbol: '🜍', label: 'Manifesto' },
-  { targetIndex: 3, symbol: '✉', label: 'Contato' },
+{ targetIndex: 0, symbol: '☉', label: 'inicio' },     // Sol — representa centro, consciência, começo
+{ targetIndex: 1, symbol: '⚚', label: 'nomes do movimento' },   // Caduceu — símbolo de comunicação, arte, mercúrio
+{ targetIndex: 2, symbol: '✦', label: 'o que somos' },    // Estrela — luz, conexão, espiritualidade
+
 ];
 
 export default function Navigation() {
@@ -25,7 +25,7 @@ export default function Navigation() {
               >
                 {/* Ícone movido pra cima com margem negativa */}
                 <span
-                  className={`nav-symbol mb-6 text-6xl transition-colors duration-300 md:text-7xl text-grainy text-distorted ${
+                  className={`nav-symbol mb-6 text-6xl transition-colors duration-300 md:text-7xl text-grainy-distorted ${
                     isActive ? 'text-primary' : 'text-body group-hover:text-primary'
                   }`}
                 >
@@ -33,7 +33,7 @@ export default function Navigation() {
                 </span>
 
                 {/* Label visível no hover */}
-                <span className="nav-label pointer-events-none absolute -top-12 font-['var(--font-body)'] text-2xl text-primary opacity-0 transition-all duration-300 group-hover:-top-14 group-hover:opacity-100">
+                <span className="nav-label pointer-events-none absolute -top-12 font-['var(--font-body)'] text-2xl text-primary opacity-0 transition-all duration-300 group-hover:-top-14 group-hover:opacity-100 text-grainy-distorted">
                   {item.label}
                 </span>
               </button>

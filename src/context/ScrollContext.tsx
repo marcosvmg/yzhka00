@@ -20,7 +20,7 @@ export const useScroll = () => {
 };
 
 // Definimos nossas seções aqui. Começamos com as que já temos.
-export const sections: string[] = ['#inicio', '#artistas', '#manifesto', '#contato'];
+export const sections: string[] = ['#inicio', '#artistas', '#contato'];
 
 export const ScrollProvider = ({ children }: { children: ReactNode }) => {
   const [isAnimating, setIsAnimating] = useState(false);
