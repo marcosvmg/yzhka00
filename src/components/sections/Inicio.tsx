@@ -41,7 +41,6 @@ export default function Inicio() {
 
   const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
     if (e.touches.length > 0) {
-      e.preventDefault();
       updateRotation(e.touches[0].clientX, e.touches[0].clientY);
     }
   };
@@ -69,6 +68,7 @@ export default function Inicio() {
           onTouchEnd={resetRotation}
           onTouchCancel={resetRotation}
           className="group relative h-[260px] w-full max-w-[280px] [perspective:1000px] sm:h-[500px] sm:max-w-[400px] md:h-[650px] lg:h-[850px] lg:max-w-none"
+          style={{ touchAction: 'none' }}
         >
           <div
             className="h-full w-full transition-transform duration-300 ease-out group-hover:scale-105"

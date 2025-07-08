@@ -6,16 +6,15 @@ import { useScroll, sections } from '@/context/ScrollContext';
 export default function ScrollController({ children }: { children: React.ReactNode }) {
   const { scrollToSection } = useScroll();
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
-  const touchStartY = useRef(0); // Para controle de toque no mobile
+  const touchStartY = useRef<number | null>(null);
+  const isThrottled = useRef(false);
+  const throttleDuration = 700; // Reduzi o cooldown para mais responsividade
 
   useEffect(() => {
-    let isThrottled = false;
-    const throttleDuration = 1600; // Duração do "cooldown" do scroll
-
     const handleWheel = (e: WheelEvent) => {
-      if (isThrottled) return;
-      isThrottled = true;
-      setTimeout(() => { isThrottled = false; }, throttleDuration);
+      if (isThrottled.current) return;
+      isThrottled.current = true;
+      setTimeout(() => { isThrottled.current = false; }, throttleDuration);
 
       const direction = e.deltaY > 0 ? 1 : -1;
       const nextIndex = currentSectionIndex + direction;
@@ -31,31 +30,34 @@ export default function ScrollController({ children }: { children: React.ReactNo
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (isThrottled) return;
+      if (isThrottled.current || touchStartY.current === null) return;
 
-      const touchEndY = e.changedTouches[0].clientY;
-      const direction = touchStartY.current > touchEndY ? 1 : -1; // Swipe para cima = scroll para baixo
+      const touchCurrentY = e.touches[0].clientY;
+      const diff = touchStartY.current - touchCurrentY;
 
-      if (Math.abs(touchStartY.current - touchEndY) > 50) { // Apenas se o swipe for longo o suficiente
-        isThrottled = true;
-        setTimeout(() => { isThrottled = false; }, throttleDuration);
+      if (Math.abs(diff) > 40) {
+        isThrottled.current = true;
+        setTimeout(() => { isThrottled.current = false; }, throttleDuration);
 
+        const direction = diff > 0 ? 1 : -1;
         const nextIndex = currentSectionIndex + direction;
+
         if (nextIndex >= 0 && nextIndex < sections.length) {
           setCurrentSectionIndex(nextIndex);
           scrollToSection(nextIndex);
         }
+        touchStartY.current = null; // Reset para evitar múltiplos triggers no mesmo swipe
       }
     };
 
-    window.addEventListener('wheel', handleWheel);
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchend', handleTouchMove);
+    window.addEventListener('wheel', handleWheel, { passive: true });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
 
     return () => {
       window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchend', handleTouchMove);
+      window.removeEventListener('touchmove', handleTouchMove);
     };
   }, [currentSectionIndex, scrollToSection]);
 
