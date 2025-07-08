@@ -12,8 +12,8 @@ export default function Navigation() {
   const { scrollToSection, currentSectionIndex } = useScroll();
 
   return (
-    <nav className="fixed bottom-8 left-1/2 z-[5000] -translate-x-1/2 sm:bottom-10">
-      <ul className="flex items-center gap-8 sm:gap-10 md:gap-12">
+    <nav className="fixed bottom-6 sm:bottom-10 left-1/2 z-[5000] -translate-x-1/2">
+      <ul className="flex items-center gap-6 sm:gap-10 md:gap-12 px-4">
         {navItems.map((item) => {
           const isActive = item.targetIndex === currentSectionIndex;
           return (
@@ -24,7 +24,7 @@ export default function Navigation() {
                 aria-label={`Ir para a seção ${item.label}`}
               >
                 <span
-                  className={`nav-symbol text-5xl transition-colors duration-300 md:text-6xl lg:text-7xl text-grainy-distorted ${
+                  className={`nav-symbol text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-grainy-distorted transition-colors duration-300 ${
                     isActive ? 'text-primary' : 'text-body group-hover:text-primary'
                   }`}
                 >
@@ -32,7 +32,7 @@ export default function Navigation() {
                 </span>
 
                 <span
-                  className={`nav-label pointer-events-none absolute -top-10 font-['var(--font-body)'] text-xl text-primary transition-all duration-300 sm:text-2xl md:-top-12 text-grainy-distorted ${
+                  className={`nav-label pointer-events-none absolute -top-8 sm:-top-10 md:-top-12 font-['var(--font-body)'] text-base sm:text-xl text-primary text-grainy-distorted transition-all duration-300 ${
                     isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
                   }`}
                 >

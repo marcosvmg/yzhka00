@@ -5,7 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import ArtistCard from '@/components/sections/ArtistCard';
 
 const artistsData = [
-    {
+      {
         name: 'miseryswin',
         description: 'um bom feiticeiro não pode brincar com a sorte.',
         imageUrl: '/assets/artistas/miseryswin.jpeg',
@@ -79,79 +79,79 @@ const artistsData = [
 ];
 
 export default function Artistas() {
-    const [emblaRef, emblaApi] = useEmblaCarousel({
-        align: 'start',
-        containScroll: 'trimSnaps',
-    });
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: 'start',
+    containScroll: 'trimSnaps',
+  });
 
-    const scrollPrev = useCallback(() => {
-        if (emblaApi) emblaApi.scrollPrev();
-    }, [emblaApi]);
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
 
-    const scrollNext = useCallback(() => {
-        if (emblaApi) emblaApi.scrollNext();
-    }, [emblaApi]);
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
-    return (
-        <section
-            id="artistas"
-            className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-20 sm:px-8 lg:px-12"
-        >
-            <div
-                className="absolute inset-0 z-0 bg-cover bg-center"
-                style={{
-                    backgroundImage: "url('/assets/img/movimento-bg.png')",
-                    opacity: 0.3,
-                }}
-            />
-            <div className="relative z-10 mx-auto w-full max-w-7xl">
-                <div className="mb-4 text-center">
-                    <h2
-                        className="font-['var(--font-heading)'] text-4xl leading-tight sm:text-xl md:text-5xl lg:text-6xl text-grainy-distorted"
-                        style={{ color: 'rgb(var(--color-primary))' }}
-                    >
-                         PRINCIPAIS NOMES DO YZHKA
-                    </h2>
-                    <p
-                        className="mt-4 text-lg text-body sm:text-xl"
-                        style={{ color: 'rgb(var(--color-text-body))' }}
-                    >
-                        Somos um só.
-                    </p>
+  return (
+    <section
+      id="artistas"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-16 sm:px-8 sm:py-20 lg:px-12"
+    >
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/assets/img/movimento-bg.png')",
+          opacity: 0.3,
+        }}
+      />
+      <div className="relative z-10 mx-auto w-full max-w-7xl">
+        <div className="mb-6 text-center px-2 sm:px-0">
+          <h2
+            className="font-['var(--font-heading)'] text-3xl sm:text-xl md:text-5xl lg:text-6xl leading-tight text-grainy-distorted"
+            style={{ color: 'rgb(var(--color-primary))' }}
+          >
+            PRINCIPAIS NOMES DO YZHKA
+          </h2>
+          <p
+            className="mt-4 text-base sm:text-xl text-body"
+            style={{ color: 'rgb(var(--color-text-body))' }}
+          >
+            Somos um só.
+          </p>
+        </div>
+
+        <div className="relative">
+          <div className="embla" ref={emblaRef}>
+            <div className="embla__container">
+              {artistsData.map((artist, index) => (
+                <div
+                  key={index}
+                  className="embla__slide basis-[85%] sm:basis-1/2 md:basis-2/5 lg:basis-[28.57%] flex-shrink-0"
+                >
+                  <div className="p-2 sm:p-4">
+                    <ArtistCard artist={artist} />
+                  </div>
                 </div>
-
-                <div className="relative">
-                    <div className="embla" ref={emblaRef}>
-                        <div className="embla__container">
-                            {artistsData.map((artist, index) => (
-                                <div
-                                    className="embla__slide basis-full flex-shrink-0 sm:basis-1/2 md:basis-2/5 lg:basis-[28.57%]"
-                                    key={index}
-                                >
-                                    <div className="p-2 sm:p-4">
-                                        <ArtistCard artist={artist} />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <button
-                        className="hidden md:block absolute top-1/2 -translate-y-1/2 left-0 md:-left-12 text-4xl text-body transition-all duration-300 hover:text-primary hover:scale-110 z-10"
-                        onClick={scrollPrev}
-                        aria-label="Artista Anterior"
-                    >
-                        {'<'}
-                    </button>
-                    <button
-                        className="hidden md:block absolute top-1/2 -translate-y-1/2 right-0 md:-right-12 text-4xl text-body transition-all duration-300 hover:text-primary hover:scale-110 z-10"
-                        onClick={scrollNext}
-                        aria-label="Próximo Artista"
-                    >
-                        {'>'}
-                    </button>
-                </div>
+              ))}
             </div>
-        </section>
-    );
+          </div>
+
+          <button
+            className="hidden md:block absolute top-1/2 -translate-y-1/2 left-0 md:-left-12 text-4xl text-body transition-all duration-300 hover:text-primary hover:scale-110 z-10"
+            onClick={scrollPrev}
+            aria-label="Artista Anterior"
+          >
+            {'<'}
+          </button>
+          <button
+            className="hidden md:block absolute top-1/2 -translate-y-1/2 right-0 md:-right-12 text-4xl text-body transition-all duration-300 hover:text-primary hover:scale-110 z-10"
+            onClick={scrollNext}
+            aria-label="Próximo Artista"
+          >
+            {'>'}
+          </button>
+        </div>
+      </div>
+    </section>
+  );
 }
