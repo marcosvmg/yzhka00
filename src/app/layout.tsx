@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" suppressHydrationWarning={true}>
+    <html lang="pt-br" suppressHydrationWarning={true} className="select-none">
       <body className={`${fontHeading.variable} ${fontBody.variable} font-['var(--font-body)']`}>
         <Head>
           <link rel="icon" href="/favicon.png" />
