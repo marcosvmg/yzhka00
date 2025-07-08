@@ -3,18 +3,17 @@
 import { useScroll } from '@/context/ScrollContext';
 
 const navItems = [
-{ targetIndex: 0, symbol: '☉', label: 'inicio' },     // Sol — representa centro, consciência, começo
-{ targetIndex: 1, symbol: '⚚', label: 'nomes do movimento' },   // Caduceu — símbolo de comunicação, arte, mercúrio
-{ targetIndex: 2, symbol: '✦', label: 'o que somos' },    // Estrela — luz, conexão, espiritualidade
-
+  { targetIndex: 0, symbol: '☉', label: 'início' },
+  { targetIndex: 1, symbol: '⚚', label: 'artistas' },
+  { targetIndex: 2, symbol: '✦', label: 'contato' },
 ];
 
 export default function Navigation() {
   const { scrollToSection, currentSectionIndex } = useScroll();
 
   return (
-    <nav className="fixed bottom-10 left-1/2 z-[5000] -translate-x-1/2">
-      <ul className="flex items-center gap-10 md:gap-12">
+    <nav className="fixed bottom-8 left-1/2 z-[5000] -translate-x-1/2 sm:bottom-10">
+      <ul className="flex items-center gap-8 sm:gap-10 md:gap-12">
         {navItems.map((item) => {
           const isActive = item.targetIndex === currentSectionIndex;
           return (
@@ -22,18 +21,21 @@ export default function Navigation() {
               <button
                 onClick={() => scrollToSection(item.targetIndex)}
                 className="group relative flex flex-col items-center focus:outline-none"
+                aria-label={`Ir para a seção ${item.label}`}
               >
-                {/* Ícone movido pra cima com margem negativa */}
                 <span
-                  className={`nav-symbol mb-6 text-6xl transition-colors duration-300 md:text-7xl text-grainy-distorted ${
+                  className={`nav-symbol text-5xl transition-colors duration-300 md:text-6xl lg:text-7xl text-grainy-distorted ${
                     isActive ? 'text-primary' : 'text-body group-hover:text-primary'
                   }`}
                 >
                   {item.symbol}
                 </span>
 
-                {/* Label visível no hover */}
-                <span className="nav-label pointer-events-none absolute -top-12 font-['var(--font-body)'] text-2xl text-primary opacity-0 transition-all duration-300 group-hover:-top-14 group-hover:opacity-100 text-grainy-distorted">
+                <span
+                  className={`nav-label pointer-events-none absolute -top-10 font-['var(--font-body)'] text-xl text-primary transition-all duration-300 sm:text-2xl md:-top-12 text-grainy-distorted ${
+                    isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                  }`}
+                >
                   {item.label}
                 </span>
               </button>
