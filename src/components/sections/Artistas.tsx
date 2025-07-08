@@ -5,7 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import ArtistCard from '@/components/sections/ArtistCard';
 
 const artistsData = [
-      {
+        {
         name: 'miseryswin',
         description: 'um bom feiticeiro não pode brincar com a sorte.',
         imageUrl: '/assets/artistas/miseryswin.jpeg',
@@ -80,7 +80,7 @@ const artistsData = [
 
 export default function Artistas() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: 'start',
+    align: 'center',
     containScroll: 'trimSnaps',
   });
 
@@ -95,7 +95,7 @@ export default function Artistas() {
   return (
     <section
       id="artistas"
-      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-16 sm:px-8 sm:py-20 lg:px-12"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-14 sm:px-8 sm:py-20 lg:px-12"
     >
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
@@ -104,16 +104,17 @@ export default function Artistas() {
           opacity: 0.3,
         }}
       />
+
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <div className="mb-6 text-center px-2 sm:px-0">
           <h2
-            className="font-['var(--font-heading)'] text-3xl sm:text-xl md:text-5xl lg:text-6xl leading-tight text-grainy-distorted"
+            className="font-['var(--font-heading)'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-grainy-distorted"
             style={{ color: 'rgb(var(--color-primary))' }}
           >
             PRINCIPAIS NOMES DO YZHKA
           </h2>
           <p
-            className="mt-4 text-base sm:text-xl text-body"
+            className="mt-3 text-base sm:text-lg text-body"
             style={{ color: 'rgb(var(--color-text-body))' }}
           >
             Somos um só.
@@ -122,13 +123,13 @@ export default function Artistas() {
 
         <div className="relative">
           <div className="embla" ref={emblaRef}>
-            <div className="embla__container">
+            <div className="embla__container px-2 sm:px-0">
               {artistsData.map((artist, index) => (
                 <div
                   key={index}
                   className="embla__slide basis-[85%] sm:basis-1/2 md:basis-2/5 lg:basis-[28.57%] flex-shrink-0"
                 >
-                  <div className="p-2 sm:p-4">
+                  <div className="px-1 sm:px-2">
                     <ArtistCard artist={artist} />
                   </div>
                 </div>

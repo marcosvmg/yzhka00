@@ -3,22 +3,22 @@ import Link from 'next/link';
 export default function Header() {
   return (
     <header
-      className="fixed left-0 top-0 z-50 w-full px-4 py-3 sm:p-8 lg:p-10"
+      className="fixed left-0 top-0 z-50 w-full px-3 py-2 sm:px-6 sm:py-6 lg:px-10 lg:py-8"
       style={{
         background:
-          'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%)',
+          'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%)',
       }}
     >
       <Link
         href="/"
-        className="flex flex-col text-lg sm:text-2xl font-bold transition-opacity duration-300 hover:opacity-80"
+        className="flex flex-col leading-tight transition-opacity duration-300 hover:opacity-80"
         style={{
           fontFamily: 'var(--font-heading)',
           color: 'rgb(var(--color-primary))',
         }}
       >
-        <span>yzhka.com.br</span>
-        <span className="opacity-80 text-sm sm:text-base">#yzhka00</span>
+        <span className="text-base font-bold sm:text-2xl">yzhka.com.br</span>
+        <span className="text-xs opacity-70 sm:text-base">#yzhka00</span>
       </Link>
     </header>
   );

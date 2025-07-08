@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer
       id="contato"
-      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-10 text-center sm:p-8"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-12 text-center sm:px-8 sm:py-16"
     >
       {/* Imagem de fundo com opacidade */}
       <div
@@ -18,21 +18,21 @@ export default function Footer() {
       />
 
       {/* Conteúdo */}
-      <div className="relative z-10 flex flex-col items-center px-2 sm:px-0">
+      <div className="relative z-10 flex flex-col items-center px-4 sm:px-0 max-w-lg sm:max-w-3xl">
         <h2
-          className="font-['var(--font-heading)'] text-4xl sm:text-6xl leading-tight text-grainy-distorted"
+          className="font-['var(--font-heading)'] text-3xl sm:text-6xl leading-tight text-grainy-distorted"
           style={{ color: 'rgb(var(--color-primary))' }}
         >
           O QUE SOMOS
         </h2>
         <p
-          className="mx-auto mt-5 max-w-md text-base sm:max-w-3xl sm:mt-8 sm:text-xl md:text-2xl leading-relaxed"
+          className="mx-auto mt-4 max-w-full text-base sm:text-xl md:text-2xl leading-relaxed"
           style={{ color: 'rgb(var(--color-text-body))' }}
         >
           somos a a última esperança, somos um, somos você, somos YZHKA.
         </p>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-8 sm:mt-12 sm:gap-12 text-grainy-distorted">
+        <div className="mt-8 flex flex-wrap justify-center gap-6 sm:mt-12 sm:gap-12 text-grainy-distorted">
           <a
             href="https://www.instagram.com/yzhka00/"
             target="_blank"
@@ -40,7 +40,7 @@ export default function Footer() {
             className="text-primary transition-transform hover:scale-110"
             aria-label="Instagram"
           >
-            <FaInstagram size={36} className="sm:size-[44px]" />
+            <FaInstagram size={36} />
           </a>
           <a
             href="mailto:contato@yzhka00.com"
@@ -49,13 +49,13 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="Email"
           >
-            <FaEnvelope size={36} className="sm:size-[44px]" />
+            <FaEnvelope size={36} />
           </a>
         </div>
       </div>
 
       {/* Rodapé */}
-      <div className="absolute bottom-4 sm:bottom-8 text-center z-10">
+      <div className="absolute bottom-6 sm:bottom-8 text-center z-10 w-full">
         <p
           className="text-sm sm:text-base"
           style={{ color: 'rgb(var(--color-text-body))' }}

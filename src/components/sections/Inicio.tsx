@@ -49,7 +49,7 @@ export default function Inicio() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-16 sm:px-16 sm:py-28 lg:px-32"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-14 sm:px-16 sm:py-28 lg:px-32"
     >
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
@@ -59,31 +59,8 @@ export default function Inicio() {
         }}
       />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1600px] flex-col gap-12 lg:grid lg:grid-cols-2 lg:gap-20">
-        <div className="text-center px-2 sm:px-0 lg:text-left">
-          <div className="relative">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 select-none font-['var(--font-heading)'] text-[8rem] leading-none opacity-10 sm:text-[15rem] md:text-[20rem] lg:text-[25rem] text-grainy-distorted"
-              style={{ color: 'rgb(var(--color-text-subtle))' }}
-            >
-              ISCA
-            </div>
-            <h1
-              style={{ color: 'rgb(var(--color-primary))' }}
-              className="relative z-10 font-['var(--font-heading)'] text-5xl leading-tight sm:text-7xl md:text-9xl lg:text-[10rem] text-grainy-distorted"
-            >
-              #YZHKA00
-            </h1>
-          </div>
-          <p
-            style={{ color: 'rgb(var(--color-text-body))' }}
-            className="mx-auto mt-6 max-w-md text-lg italic sm:mt-12 sm:text-2xl md:text-3xl lg:mx-0"
-          >
-            a última esperança
-          </p>
-        </div>
-
+      <div className="relative z-10 mx-auto flex w-full max-w-[1600px] flex-col-reverse items-center gap-10 lg:grid lg:grid-cols-2 lg:items-center lg:gap-20">
+        {/* Imagem */}
         <div
           ref={containerRef}
           onMouseMove={handleMouseMove}
@@ -91,7 +68,7 @@ export default function Inicio() {
           onTouchMove={handleTouchMove}
           onTouchEnd={resetRotation}
           onTouchCancel={resetRotation}
-          className="group relative mx-auto h-[300px] w-full max-w-xs [perspective:1000px] sm:h-[600px] md:h-[700px] lg:h-[850px] lg:max-w-none"
+          className="group relative h-[260px] w-full max-w-[280px] [perspective:1000px] sm:h-[500px] sm:max-w-[400px] md:h-[650px] lg:h-[850px] lg:max-w-none"
         >
           <div
             className="h-full w-full transition-transform duration-300 ease-out group-hover:scale-105"
@@ -111,6 +88,31 @@ export default function Inicio() {
               />
             )}
           </div>
+        </div>
+
+        {/* Texto */}
+        <div className="text-center px-2 sm:px-0 lg:text-left">
+          <div className="relative">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 select-none font-['var(--font-heading)'] text-[5rem] leading-none opacity-10 sm:text-[10rem] md:text-[15rem] lg:text-[25rem] text-grainy-distorted"
+              style={{ color: 'rgb(var(--color-text-subtle))' }}
+            >
+              ISCA
+            </div>
+            <h1
+              style={{ color: 'rgb(var(--color-primary))' }}
+              className="relative z-10 font-['var(--font-heading)'] text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] leading-tight text-grainy-distorted"
+            >
+              #YZHKA00
+            </h1>
+          </div>
+          <p
+            style={{ color: 'rgb(var(--color-text-body))' }}
+            className="mx-auto mt-4 max-w-xs text-base italic sm:mt-8 sm:text-xl md:text-2xl lg:mx-0"
+          >
+            a última esperança
+          </p>
         </div>
       </div>
     </section>
